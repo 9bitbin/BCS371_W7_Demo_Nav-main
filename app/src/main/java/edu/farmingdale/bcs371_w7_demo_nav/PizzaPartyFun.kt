@@ -120,8 +120,8 @@ fun PizzaPartyScreen(navController: NavController, modifier: Modifier = Modifier
                 navController.navigate("first_screen") // Navigate to GPA calculator on click
             }, modifier = modifier
                 .padding(top = 16.dp) // Add top padding
-                    .fillMaxWidth() // Fill the width of the parent
-                    .background(Color.Yellow) // Set button background color to yellow
+                .fillMaxWidth() // Fill the width of the parent
+                .background(Color.Yellow) // Set button background color to yellow
         ) {
             Text("Go to First Screen", color = Color.Yellow) //set button text and color
         }

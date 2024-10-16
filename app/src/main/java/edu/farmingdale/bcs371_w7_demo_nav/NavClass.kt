@@ -47,8 +47,7 @@ fun Navigation() {
     val navController = rememberNavController()
 
     // Define the routes (or destinations) in the navigation system
-    NavHost(navController = navController, startDestination = "splash_screen")
-    {
+    NavHost(navController = navController, startDestination = "splash_screen") {
         // First screen displayed is the Splash Screen
         composable("splash_screen") {
             SpalshScreen(navController)
