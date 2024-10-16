@@ -1,10 +1,12 @@
 package edu.farmingdale.bcs371_w7_demo_nav
+
 /**
  * Name: Himal Shrestha
  * Prof: ALrajab
  * Class: BCS371 Mobile Application Development
  * Week 07 Assignment
  */
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -37,13 +39,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import edu.farmingdale.bcs371_w7_demo_nav.ui.theme.BCS371_W7_Demo_NavTheme
 
+// Main activity class for the application
 class MainActivity2 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableEdgeToEdge() // Enable edge-to-edge display for the app
         setContent {
-            BCS371_W7_Demo_NavTheme {
+            BCS371_W7_Demo_NavTheme { // Apply the app's theme
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    // Call the BasicOperations composable function with inner padding
                     BasicOperations(
                         name = "Activity 1",
                         modifier = Modifier.padding(innerPadding)
@@ -54,64 +58,73 @@ class MainActivity2 : ComponentActivity() {
     }
 }
 
+// Composable function for basic operations
 @Composable
 fun BasicOperations(name: String, modifier: Modifier = Modifier) {
-    val  context = LocalContext.current
+    val context = LocalContext.current // Get the current context
+    var switchState by remember { mutableStateOf(true) } // State for the switch (default is true)
 
     Column {
-        Spacer(modifier = Modifier.padding(50.dp))
-        Button( onClick = {
-            val newInt = Intent(Intent.ACTION_VIEW)
-            newInt.setData(Uri.parse("geo:0,0?q=Farmingdale State College, NY"))
-            context.startActivity(newInt)
-        },
-            modifier= Modifier.padding(start = 40.dp, end = 40.dp)) {
-            Icon( imageVector = Icons.Default.LocationOn, contentDescription = "Location")
-            Text("Show me  Farmingdale")
-        }
-        HorizontalDivider(thickness = DividerDefaults.Thickness)
+        Spacer(modifier = Modifier.padding(50.dp)) // Add space at the top
 
-        Button( onClick = {
-            val newInt = Intent(Intent.ACTION_VIEW)
+        // Button to show location of Farmingdale State College
+        Button(onClick = {
+            val newInt = Intent(Intent.ACTION_VIEW) // Create an intent to view a location
+            newInt.setData(Uri.parse("geo:0,0?q=Farmingdale State College, NY")) // Set the URI for the location
+            context.startActivity(newInt) // Start the intent
+        },
+            modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchState) { // Enable button based on switch state
+            Icon(imageVector = Icons.Default.LocationOn, contentDescription = "Location") // Icon for location
+            Text("Show me Farmingdale") // Button text
+        }
+
+        HorizontalDivider(thickness = DividerDefaults.Thickness) // Divider between buttons
+
+        // Button to initiate a phone call
+        Button(onClick = {
             // ToDo 1: create implicit intent to open a web page or call a phone number
-            context.startActivity(newInt)
+            val newInt = Intent(Intent.ACTION_DIAL) // Change to ACTION_VIEW if using a URL
+            newInt.setData(Uri.parse("tel:1234567890")) // Set the URI for the phone number
+            context.startActivity(newInt) // Start the intent
         },
-            modifier= Modifier.padding(start = 40.dp, end = 40.dp)) {
-            Icon( imageVector = Icons.Default.Phone, contentDescription = "Phone")
-            Text("Call Me")
+            modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchState) { // Enable button based on switch state
+            Icon(imageVector = Icons.Default.Phone, contentDescription = "Phone", modifier = Modifier.padding(end = 10.dp)) // Icon for phone, with 10dp padding
+            Text("Call Me") // Button text
         }
 
-        HorizontalDivider(thickness = DividerDefaults.Thickness)
+        HorizontalDivider(thickness = DividerDefaults.Thickness) // Divider between buttons
 
-        Button( onClick = {
+        // Button to navigate to another activity
+        Button(onClick = {
             // ToDo 2: create explicit intent to open a new activity
-            
+            val newInt = Intent(context, MainActivity2::class.java) // Create an intent to start another activity
+            context.startActivity(newInt) // Start the intent
         },
-            modifier= Modifier.padding(start = 40.dp, end = 40.dp)) {
-            Icon( imageVector = Icons.Default.Info, contentDescription = "Phone")
-            Text("Go To activity 2")
+            modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchState) { // Enable button based on switch state
+            Icon(imageVector = Icons.Default.Info, contentDescription = "Info", modifier = Modifier.padding(end = 10.dp)) // Icon for info, with 10dp padding
+            Text("Go To Activity 2") // Button text
         }
 
-        // ToDo 3: Change the spacing between the icons and text to be 10dp
         // ToDo 4: Add a horizontal divider between the buttons
+        HorizontalDivider(thickness = DividerDefaults.Thickness) // Divider between buttons
 
-
-        // ToDo 5: This switch is not working fix it
+        // Switch to enable or disable buttons
         Switch(
-            checked = true,
-            onCheckedChange = {  },
-            modifier = Modifier.padding(10.dp),
+            checked = switchState, // The current state of the switch
+            onCheckedChange = { switchState = it }, // Update the switch state when changed
+            modifier = Modifier.padding(10.dp), // Padding for the switch
         )
+
         // ToDo 6: when the switch is off, disable the buttons
     }
-
-
 }
 
+// Preview function to visualize the BasicOperations composable
 @Preview(showBackground = true)
 @Composable
 fun BasicOperationsPreview() {
     BCS371_W7_Demo_NavTheme {
-        BasicOperations("Android")
+        BasicOperations("Android") // Preview with "Android" as the name
     }
 }
+
