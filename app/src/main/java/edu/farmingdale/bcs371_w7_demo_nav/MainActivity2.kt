@@ -86,6 +86,7 @@ fun BasicOperations(name: String, modifier: Modifier = Modifier) {
         Button(
             onClick = {
                 // ToDo 1: create implicit intent to open a web page or call a phone number
+                // Create an intent to make a phone call
                 val newInt = Intent(Intent.ACTION_DIAL) // Change to ACTION_VIEW if using a URL
                 newInt.setData(Uri.parse("tel:1234567890")) // Set the URI for the phone number
                 context.startActivity(newInt) // Start the intent
@@ -105,6 +106,7 @@ fun BasicOperations(name: String, modifier: Modifier = Modifier) {
         Button(
             onClick = {
                 // ToDo 2: create explicit intent to open a new activity
+                // Create an intent to start another activity
                 val newInt = Intent(
                     context, MainActivity2::class.java
                 ) // Create an intent to start another activity
@@ -120,6 +122,7 @@ fun BasicOperations(name: String, modifier: Modifier = Modifier) {
         }
 
         // ToDo 4: Add a horizontal divider between the buttons
+        // Horizontal divider to separate buttons
         HorizontalDivider(thickness = DividerDefaults.Thickness) // Divider between buttons
         // ToDo 6: when the switch is off, disable the buttons
         // Switch to enable or disable buttons

@@ -19,6 +19,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
@@ -29,6 +30,7 @@ import androidx.navigation.NavController
 import kotlin.math.ceil
 
 // ToDo 9: make this composable navigable and then add a button to navigate to the GPA calculator
+// Done: Added button to navigate to GPA Calculator Screen
 @Composable
 fun PizzaPartyScreen(navController: NavController, modifier: Modifier = Modifier) {
     // Declare state variables for total pizzas, number of people input, and hunger level
@@ -102,6 +104,7 @@ fun PizzaPartyScreen(navController: NavController, modifier: Modifier = Modifier
         }
 
         // ToDo 9: Added button to navigate to GPA Calculator Screen
+        // Button to navigate to GPA calculator
         Button(
             onClick = {
                 navController.navigate("gpa_calculator_screen") // Navigate to GPA calculator on click
@@ -111,6 +114,16 @@ fun PizzaPartyScreen(navController: NavController, modifier: Modifier = Modifier
                 .background(Color.Yellow) // Set button background color to yellow
         ) {
             Text("Go to GPA Calculator", color = Color.Yellow) // Set button text and color
+        }
+        Button(
+            onClick = {
+                navController.navigate("first_screen") // Navigate to GPA calculator on click
+            }, modifier = modifier
+                .padding(top = 16.dp) // Add top padding
+                    .fillMaxWidth() // Fill the width of the parent
+                    .background(Color.Yellow) // Set button background color to yellow
+        ) {
+            Text("Go to First Screen", color = Color.Yellow) //set button text and color
         }
     }
 }

@@ -47,7 +47,8 @@ fun Navigation() {
     val navController = rememberNavController()
 
     // Define the routes (or destinations) in the navigation system
-    NavHost(navController = navController, startDestination = "splash_screen") {
+    NavHost(navController = navController, startDestination = "splash_screen")
+    {
         // First screen displayed is the Splash Screen
         composable("splash_screen") {
             SpalshScreen(navController)
@@ -69,7 +70,7 @@ fun Navigation() {
         }
 
         composable("gpa_calculator_screen") {
-            GPACalculatorScreen(navController)
+            gpaappFun(navController)
         }
     }
 }
@@ -165,23 +166,23 @@ fun SecondScreen(navController: NavController) {
 //    }
 //}
 
-// Function for the GPA Calculator Screen UI
-@Composable
-fun GPACalculatorScreen(navController: NavController) {
-    Column(
-        modifier = Modifier.padding(20.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Simple text message for the GPA Calculator Screen
-        Text(text = "GPA Calculator Screen")
-
-        // Button to navigate back to the First Screen
-        Button(onClick = { navController.navigate("first_screen") }) {
-            Text(text = "Go to First Screen")
-        }
-    }
-}
+//// Function for the GPA Calculator Screen UI
+//@Composable
+//fun GPACalculatorScreen(navController: NavController) {
+//    Column(
+//        modifier = Modifier.padding(20.dp),
+//        verticalArrangement = Arrangement.Center,
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    ) {
+//        // Simple text message for the GPA Calculator Screen
+//        Text(text = "GPA Calculator Screen")
+//
+//        // Button to navigate back to the First Screen
+//        Button(onClick = { navController.navigate("first_screen") }) {
+//            Text(text = "Go to First Screen")
+//        }
+//    }
+//}
 
 // Function for the Splash Screen UI
 @Composable
