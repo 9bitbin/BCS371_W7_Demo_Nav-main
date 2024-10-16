@@ -11,6 +11,8 @@ This project is part of the Mobile Application Development course (BCS371) at Fa
 - **Navigate Button** ➡️: Launches a new activity through an explicit intent.
 - **Toggle Switch** 🔄: Enables or disables the buttons based on its state.
 - **Visual Dividers** ➖: Horizontal lines are added between buttons for better UI organization.
+- **Pizza Party Screen** 🍕: Enter how hungry you are, how many people there are and get an estimate of how many pizzas you should get.
+- **GPA Calculator** 🧮: Ever find yourself in a rut and you want to know what your average is, use the calculator so that you can find the average (with nice visuals).
 
 ## Technologies Used 🛠️
 
@@ -18,9 +20,10 @@ This project is part of the Mobile Application Development course (BCS371) at Fa
 - Kotlin
 - Jetpack Compose
 - Material Design Components
+- Composables
 
 ## Installation ⚙️
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/9bitbin/your-repo-name.git
+   git clone https://github.com/9bitbin/BCS371_W7_Demo_Nav-main.git
