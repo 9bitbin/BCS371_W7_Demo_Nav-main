@@ -49,8 +49,7 @@ class MainActivity2 : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     // Call the BasicOperations composable function with inner padding
                     BasicOperations(
-                        name = "Activity 1",
-                        modifier = Modifier.padding(innerPadding)
+                        name = "Activity 1", modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
@@ -68,46 +67,61 @@ fun BasicOperations(name: String, modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.padding(50.dp)) // Add space at the top
 
         // Button to show location of Farmingdale State College
-        Button(onClick = {
-            val newInt = Intent(Intent.ACTION_VIEW) // Create an intent to view a location
-            newInt.setData(Uri.parse("geo:0,0?q=Farmingdale State College, NY")) // Set the URI for the location
-            context.startActivity(newInt) // Start the intent
-        },
-            modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchState) { // Enable button based on switch state
-            Icon(imageVector = Icons.Default.LocationOn, contentDescription = "Location") // Icon for location
+        Button(
+            onClick = {
+                val newInt = Intent(Intent.ACTION_VIEW) // Create an intent to view a location
+                newInt.setData(Uri.parse("geo:0,0?q=Farmingdale State College, NY")) // Set the URI for the location
+                context.startActivity(newInt) // Start the intent
+            }, modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchState
+        ) { // Enable button based on switch state
+            Icon(
+                imageVector = Icons.Default.LocationOn, contentDescription = "Location"
+            ) // Icon for location
             Text("Show me Farmingdale") // Button text
         }
 
         HorizontalDivider(thickness = DividerDefaults.Thickness) // Divider between buttons
 
         // Button to initiate a phone call
-        Button(onClick = {
-            // ToDo 1: create implicit intent to open a web page or call a phone number
-            val newInt = Intent(Intent.ACTION_DIAL) // Change to ACTION_VIEW if using a URL
-            newInt.setData(Uri.parse("tel:1234567890")) // Set the URI for the phone number
-            context.startActivity(newInt) // Start the intent
-        },
-            modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchState) { // Enable button based on switch state
-            Icon(imageVector = Icons.Default.Phone, contentDescription = "Phone", modifier = Modifier.padding(end = 10.dp)) // Icon for phone, with 10dp padding
+        Button(
+            onClick = {
+                // ToDo 1: create implicit intent to open a web page or call a phone number
+                val newInt = Intent(Intent.ACTION_DIAL) // Change to ACTION_VIEW if using a URL
+                newInt.setData(Uri.parse("tel:1234567890")) // Set the URI for the phone number
+                context.startActivity(newInt) // Start the intent
+            }, modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchState
+        ) { // Enable button based on switch state
+            Icon(
+                imageVector = Icons.Default.Phone,
+                contentDescription = "Phone",
+                modifier = Modifier.padding(end = 10.dp)
+            ) // Icon for phone, with 10dp padding
             Text("Call Me") // Button text
         }
 
         HorizontalDivider(thickness = DividerDefaults.Thickness) // Divider between buttons
 
         // Button to navigate to another activity
-        Button(onClick = {
-            // ToDo 2: create explicit intent to open a new activity
-            val newInt = Intent(context, MainActivity2::class.java) // Create an intent to start another activity
-            context.startActivity(newInt) // Start the intent
-        },
-            modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchState) { // Enable button based on switch state
-            Icon(imageVector = Icons.Default.Info, contentDescription = "Info", modifier = Modifier.padding(end = 10.dp)) // Icon for info, with 10dp padding
+        Button(
+            onClick = {
+                // ToDo 2: create explicit intent to open a new activity
+                val newInt = Intent(
+                    context, MainActivity2::class.java
+                ) // Create an intent to start another activity
+                context.startActivity(newInt) // Start the intent
+            }, modifier = Modifier.padding(start = 40.dp, end = 40.dp), enabled = switchState
+        ) { // Enable button based on switch state
+            Icon(
+                imageVector = Icons.Default.Info,
+                contentDescription = "Info",
+                modifier = Modifier.padding(end = 10.dp)
+            ) // Icon for info, with 10dp padding
             Text("Go To Activity 2") // Button text
         }
 
         // ToDo 4: Add a horizontal divider between the buttons
         HorizontalDivider(thickness = DividerDefaults.Thickness) // Divider between buttons
-
+        // ToDo 6: when the switch is off, disable the buttons
         // Switch to enable or disable buttons
         Switch(
             checked = switchState, // The current state of the switch
@@ -115,7 +129,7 @@ fun BasicOperations(name: String, modifier: Modifier = Modifier) {
             modifier = Modifier.padding(10.dp), // Padding for the switch
         )
 
-        // ToDo 6: when the switch is off, disable the buttons
+
     }
 }
 
